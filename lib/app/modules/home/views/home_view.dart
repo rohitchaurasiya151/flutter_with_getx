@@ -10,15 +10,34 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HomeView'),
-        centerTitle: true,
+        title: const Text('GetX Network Call'),
       ),
-      body: const Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
+      body: controller.obx((data) {
+        print(data);
+        return Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 80,
+                backgroundImage: NetworkImage(data['data']['avatar']),
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              Text(data['data']['email']),
+              const SizedBox(
+                height: 10.0,
+              ),
+              Text(data['data']['first_name']),
+              const SizedBox(
+                height: 10.0,
+              ),
+              Text(data['data']['last_name']),
+            ],
+          ),
+        );
+      }),
     );
   }
 }

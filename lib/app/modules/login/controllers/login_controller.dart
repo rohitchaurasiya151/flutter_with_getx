@@ -17,6 +17,7 @@ class LoginController extends GetxController {
 
   @override
   void onClose() {
+  
     super.onClose();
   }
 
@@ -26,4 +27,6 @@ class LoginController extends GetxController {
     await prefs.setString(kName, 'Batman');
     isAsyncCall.value = false;
   }
+
+
 }
